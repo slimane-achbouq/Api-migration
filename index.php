@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Europe/Paris');
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -12,7 +12,7 @@
 */
 
 $app = require __DIR__.'/../bootstrap/app.php';
-
+date_default_timezone_set('Europe/Paris');
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -26,3 +26,4 @@ $app = require __DIR__.'/../bootstrap/app.php';
 */
 
 $app->run();
+date_default_timezone_set('Europe/Paris');

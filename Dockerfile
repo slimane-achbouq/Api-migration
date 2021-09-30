@@ -1,22 +1,35 @@
 FROM php:5.6-apache
 
-COPY ./docker/apache.conf /etc/apache2/sites-available/000-default.conf
-COPY ./docker/app.ini /usr/local/etc/php/conf.d/app.ini
+USER root
 
-RUN curl -sS https://getcomposer.org/installer \
-        | php -- --install-dir=/usr/local/bin \
-        && mv /usr/local/bin/composer.phar /usr/local/bin/composer
+WORKDIR /var/www/html
+
+RUN apt-get update && apt-get install -y libz-dev libmemcached-dev && rm -r /var/lib/apt/lists/*
+
+RUN echo extension=memcached.so >> /usr/local/etc/php/conf.d/memcached.ini
 
 RUN apt-get update && apt-get install -y \
-  bzr \
-  cvs \
-  git \
-  mercurial \
-  subversion
+        libpng-dev \
+        zlib1g-dev \
+        libxml2-dev \
+        libzip-dev \
+        libonig-dev \
+        zip \
+        curl \
+        unzip \
+    && docker-php-ext-configure gd \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install zip \
+    && docker-php-source delete
 
-COPY / /var/www/html
-RUN composer install --prefer-source --no-interaction
+COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
+COPY ./ /var/www/html
+RUN chown -R www-data:www-data /var/www/html
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-CMD ["apachectl", "-D", "FOREGROUND"]
+RUN chown -R www-data:www-data /var/www/html \
+    && a2enmod rewrite
 
 EXPOSE 80
