@@ -1,27 +1,27 @@
-# ESGI  
+# ESGI
 
-# Mission d’expertise
-Consultant dans une Entreprise de Services Numériques (ESN)
+# Expertise mission
+Consultant in a Digital Services Company (ESN)
 
-## Membres du groupe
-Group 4: 
+## Group members
+Group 4:
 - ALAA HAZIM Zaid
 - ACHBOUQ Slimane
-- Zakaria ATTAOUI 
+- Zakaria ATTAOUI
 
-## Objectif
-mettre en place des bonnes pratiques sur un projet.
+## Goal
+implement good practices on a project.
 
-## Travail demandé
-mettre en place des bonnes pratiques sur un projet fraîchement acquis par la société cliente, et ainsi favoriser l’ajout de nouvelles fonctionnalités par une équip qui sera composée après votre passage.
+## Required work
+set up best practices on a project recently acquired by the client company, and thus encourage the addition of new functionalities by a team that will be put together after your visit.
 
-## Quoi utiliser ?
-Il est recommandé :
-- d'utiliser PHP en version 5.6 
-- Et MySQL;
+## What to use?
+It is recommended :
+- to use PHP in version 5.6
+- And MySQL;
 
 
-Le travail à rendre doit comporter tous les fichiers nécessaires à la prise en main du projet, 
-essentiellement le code source et le script de la base de données.
+The work to be returned must include all the files necessary to get started with the project,
+basically the source code and the database script.
 
-Le travail est à réaliser à l’aide de Gitlab repository, Gitlab Boards, Gitlab Issues, Gitlab CI, Github repository et Heroku en push to deploy.
+The work is to be done using Gitlab repository, Gitlab Boards, Gitlab Issues, Gitlab CI, Github repository and Heroku in push to deploy.
