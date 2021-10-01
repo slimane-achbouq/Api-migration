@@ -1,6 +1,11 @@
 <?php
 
-$DB_CONNECTION = env('APP_ENV') === 'production' ? 'pgsql' : 'mysql';
+if (env('APP_ENV') === 'production') {
+  $DB_CONNECTION = 'postgres';
+} else {
+  $DB_CONNECTION = 'mysql';
+}
+
 return [
 
   /*
@@ -71,7 +76,7 @@ return [
       'timezone'  => env('DB_TIMEZONE', '+00:00'),
       'strict'    => env('DB_STRICT_MODE', false),
     ],
-    'postgres' => [
+    'pgsql' => [
       'driver'   => 'pgsql',
       'host'     => env('DB_PG_HOST', 'ec2-54-160-96-70.compute-1.amazonaws.com'),
       'database' => env('DB_PG_DATABASE', 'd3acolrto78bnj'),
