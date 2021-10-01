@@ -1,0 +1,37 @@
+image: slimane2/laravelapi:php7.0
+
+stages:
+  - build
+  - syntax
+  - deploy
+
+composer:
+  stage: build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-composer
+    paths:
+      - vendor/
+  script:
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+  artifacts:
+    expire_in: 1 month
+    paths:
+      - vendor/
+
+phpcs:
+  stage: syntax
+  script:
+    - ./vendor/bin/phpcs --error-severity=1 --warning-severity=8 --extensions=php
+  allow_failure: true
+
+deploying:
+  stage: deploy
+  script:
+    - apt-get update -qq
+    - apt-get install -y -qq git
+    - apt-get install -y ruby
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+  only:
+    - master
+
