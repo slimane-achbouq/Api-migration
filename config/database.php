@@ -1,5 +1,6 @@
 <?php
 
+$DB_CONNECTION = env('APP_ENV') === 'production' ? 'pgsql' : 'mysql';
 return [
 
   /*
@@ -26,7 +27,7 @@ return [
   |
   */
 
-  'default' => env('DB_CONNECTION', 'mysql'),
+  'default' => env('DB_CONNECTION', $DB_CONNECTION),
 
   /*
   |--------------------------------------------------------------------------
@@ -70,6 +71,16 @@ return [
       'timezone'  => env('DB_TIMEZONE', '+00:00'),
       'strict'    => env('DB_STRICT_MODE', false),
     ],
+    'postgres' => [
+      'driver'   => 'pgsql',
+      'host'     => env('DB_PG_HOST', 'ec2-54-160-96-70.compute-1.amazonaws.com'),
+      'database' => env('DB_PG_DATABASE', 'd3acolrto78bnj'),
+      'port'     => env('DB_PG_PGSQL_PORT', 5432),
+      'username' => env('DB_PG_USERNAME', 'dzfhpgisihtsgm'),
+      'password' => env('DB_PG_PASSWORD', 'f5729c18fc3e2e53c8c22de2f99171dc51b835c844952069ebb5405046184fa3'),
+      'charset'  => 'utf8',
+      'prefix'   => '',
+    ]
 
 
   ],
