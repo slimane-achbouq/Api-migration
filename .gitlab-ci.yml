@@ -26,6 +26,7 @@ phpcs:
 
 deploying:
   stage: deploy
+  image: php:7.3
   script:
     - apt-get update -qq
     - apt-get install -y -qq git
