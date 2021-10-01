@@ -11,4 +11,4 @@
 |
 */
 
-$app->get('/', ListingController::class);
+$router->get('/', ListingController::class);
