@@ -1,5 +1,8 @@
 <?php
 
+
+/** @var \Laravel\Lumen\Routing\Router $router */
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,3 +15,7 @@
 */
 
 $app->get('/', ListingController::class);
+
+// "ListingControllerEndpoint@time"
+$app->get('/time', ListingControllerEndpoint::class);
+
