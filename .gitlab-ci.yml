@@ -1,5 +1,9 @@
 image: slimane2/laravelapi:php7.0
 
+stages:
+  - build
+  - syntax
+
 composer:
   stage: build
   cache:
